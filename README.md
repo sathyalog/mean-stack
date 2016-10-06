@@ -5,9 +5,19 @@ Install mongodb and create a database name 'test'.
 
 Before you run project make sure to run mongod.exe from mongodb->bin folder.
 
+##How to run project?
+
+Run through batch file or do manually!!
+
+#####Batch file process..
+
 To make your work simple, i have created a batch file that open all command prompts.
+
 For front-end folder alone, you have to run **gulp server**.
-For back-end folder, initially it establishes connection to db.Make sure you run mongod.exe before you run batch file. Once it connects to db, it prompts to enter cmd. Press ctrl+c to come out of it. Server runs automatically from this point.
+
+For back-end folder, initially it establishes connection to db. Make sure you run mongod.exe before you run batch file. Once it connects to db, it prompts to enter cmd. Press ctrl+c to come out of it. Server runs automatically at this point.
+
+####Manual Process..
 
 ######How to run Front-End?
 
