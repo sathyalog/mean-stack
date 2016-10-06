@@ -6,11 +6,11 @@ Install mongodb and create a database name 'test'.
 
 ######How to run Front-End?
 
-Navigate to front-end folder and open cmd and run _gulp serve_
+Navigate to front-end folder and open cmd and run **_gulp serve_**
 
 ######How to run Back-end?
 
-Navigate to back-end folder and run _node server.js_ in cmd prompt
+Navigate to back-end folder and run **_node server.js_** in cmd prompt
 
 ######How to contribute and commit files?
 
@@ -18,7 +18,7 @@ Just navigate to mean-stack folder and push files after commit.
 
 ######How to work with mongo?
 
-Install mongo in your machine and go to bin folder and run _mongod_.
+Install mongo in your machine and go to bin folder and run **_mongod_**.
 
 ######How to see all values in DB?
 
