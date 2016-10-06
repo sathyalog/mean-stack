@@ -27,10 +27,13 @@ app.post('/api/message',function(req,res){
     res.status(200);
 });
 
+//get all values in messages collection from DB
+app.get('/api/message',getMessages); // you can try finding values in browser with localhost:5000/api/message
+
 // retrieve all values from testdb->messages collection
-function getMessages(){
+function getMessages(req,res){
     Message.find({}).exec(function(err,result){
-        console.log(result);
+        res.send(result);
     })
 }
 //establish connection for mongodb
@@ -38,7 +41,7 @@ mongoose.connect("mongodb://localhost:27017/test",function(err,db){
     if(!err){
         console.log("we are connected to mongo");
         //database=db;
-        getMessages(); //once we make connections we will show up all messages
+        //getMessages(); //once we make connections we will show up all messages
     }
 });
 
