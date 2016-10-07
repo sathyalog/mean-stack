@@ -1,4 +1,4 @@
-export function config ($logProvider, toastrConfig, $authProvider,API_URL) {
+export function config ($logProvider, toastrConfig, $authProvider, API_URL) {
   'ngInject';
   // Enable log
   $logProvider.debugEnabled(true);
@@ -10,5 +10,5 @@ export function config ($logProvider, toastrConfig, $authProvider,API_URL) {
   toastrConfig.preventDuplicates = true;
   toastrConfig.progressBar = true;
 
-    $authProvider.signupUrl = API_URL+'auth/register';
+    $authProvider.signupUrl = API_URL + 'auth/register';
 }

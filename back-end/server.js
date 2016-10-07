@@ -4,10 +4,12 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 //var database;
 
-var Message = mongoose.model('Message',{  //schema creation
+/*var Message = mongoose.model('Message',{  //schema creation
     msg:String
-});
+});*/
 
+var auth = require('./controllers/auth');
+var message = require('./controllers/message');
 app.use(bodyParser.json()); // to send json data
 
 // add the following headers to allow cross origin requests
@@ -19,23 +21,14 @@ app.use(function(req,res,next){
 });
 
 // post data to server and db using api
-app.post('/api/message',function(req,res){
-    console.log(req.body);
-   // database.collection('messages').insertOne(req.body);
-    var message = new Message(req.body); //instantiate and assign to a local variable
-    message.save(); // mongoose will save values to db
-    res.status(200);
-});
+app.post('/api/message',message.post);
 
 //get all values in messages collection from DB
-app.get('/api/message',getMessages); // you can try finding values in browser with localhost:5000/api/message
+app.get('/api/message',message.get); // you can try finding values in browser with localhost:5000/api/message
 
-// retrieve all values from testdb->messages collection
-function getMessages(req,res){
-    Message.find({}).exec(function(err,result){
-        res.send(result);
-    })
-}
+//register component
+app.post('/auth/register',auth.register);
+
 //establish connection for mongodb
 mongoose.connect("mongodb://localhost:27017/test",function(err,db){
     if(!err){

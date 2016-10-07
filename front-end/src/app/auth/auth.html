@@ -24,19 +24,19 @@
                 <form name="register" ng-submit="auth.register()">
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" ng-model="auth.user.email">
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control" ng-model="pwd" name="pwd">
+                        <input type="password" class="form-control" ng-model="auth.user.pwd" name="pwd">
                     </div>
                      <div class="form-group">
                         <label>Confirm Password</label>
-                        <input type="password" class="form-control" name="pwdConfirm" compare-to="pwd" ng-model="pwdConfirm">
+                        <input type="password" class="form-control" name="pwdConfirm" compare-to="auth.user.pwd" ng-model="pwdConfirm">
                          <span class="red" ng-show="register.pwdConfirm.$dirty && register.pwdConfirm.$invalid">Password do not match</span>
                     </div>
 
-                    <button type="submit" class="btn btn-default">Register</button>
+                    <button ng-disabled="register.pwdConfirm.$invalid" type="submit" class="btn btn-default">Register</button>
                 </form>
             </div>
         </div>
