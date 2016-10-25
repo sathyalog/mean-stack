@@ -10,18 +10,18 @@ var mongoose = require('mongoose');
 
 var auth = require('./controllers/auth');
 var message = require('./controllers/message');
+var checkAuthenticated = require('./services/checkAuthenticated');
+var cors = require('./services/cors');
+
+//Middleware
 app.use(bodyParser.json()); // to send json data
 
 // add the following headers to allow cross origin requests
-app.use(function(req,res,next){
-    res.header("Access-Control-Allow-Origin","*");
-    res.header("Access-Control-Request-Headers","Content-Type, Authorization");
-    res.header("Access-Control-Allow-Headers","Content-Type, Authorization");
-    next();
-});
+app.use(cors);
 
+// Requests
 // post data to server and db using api
-app.post('/api/message',message.post);
+app.post('/api/message', checkAuthenticated, message.post);
 
 //get all values in messages collection from DB
 app.get('/api/message',message.get); // you can try finding values in browser with localhost:5000/api/message
@@ -29,6 +29,7 @@ app.get('/api/message',message.get); // you can try finding values in browser wi
 //register component
 app.post('/auth/register',auth.register);
 
+//Connection
 //establish connection for mongodb
 mongoose.connect("mongodb://localhost:27017/test",function(err,db){
     if(!err){
